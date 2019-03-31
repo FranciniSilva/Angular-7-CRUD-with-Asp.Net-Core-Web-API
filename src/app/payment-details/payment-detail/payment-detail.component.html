@@ -1,4 +1,5 @@
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="PMId" [value]="service.formData.PMId">
   <div class="form-group">
     <div class="input-group">
       <div class="input-group-prepend">
@@ -6,7 +7,7 @@
           <i class="fas fa-user-circle" [class.green-icon]="CardOwnerName.valid" [class.red-icon]="CardOwnerName.invalid && CardOwnerName.touched"></i>
         </div>
       </div>   
-      <input name="CardOwnerName" class="form-control" placeholder="Card Owner Name" #CardOwnerName="ngModel" [(ngModel)]="service.CardOwnerName" required>
+      <input name="CardOwnerName" class="form-control" placeholder="Card Owner Name" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName" required>
     </div>
   </div>
   <div class="form-group">
@@ -16,7 +17,7 @@
           <i class="fas fa-credit-card" [class.green-icon]="CardNumber.valid" [class.red-icon]="CardNumber.invalid && CardNumber.touched"></i>
         </div>
       </div>   
-      <input name="CardNumber" class="form-control" placeholder="16 Digit Card Number" #CardNumber="ngModel" [(ngModel)]="service.CardNumber" required maxlength="16" minlength="16">
+      <input name="CardNumber" class="form-control" placeholder="16 Digit Card Number" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber" required maxlength="16" minlength="16">
     </div>
   </div>
   <div class="form-row">
@@ -27,7 +28,7 @@
           <i class="fas fa-calendar-alt" [class.green-icon]="ExpirationDate.valid" [class.red-icon]="ExpirationDate.invalid && ExpirationDate.touched"></i>
         </div>
       </div>   
-      <input name="ExpirationDate" class="form-control" placeholder="MM/YY" #ExpirationDate="ngModel" [(ngModel)]="service.ExpirationDate" required maxlength="5" minlength="5">
+      <input name="ExpirationDate" class="form-control" placeholder="MM/YY" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate" required maxlength="5" minlength="5">
     </div>
   </div>
   <div class="form-group col-md-5">
@@ -37,7 +38,7 @@
           <i class="fas fa-key" [class.green-icon]="CVV.valid" [class.red-icon]="CVV.invalid && CVV.touched"></i>
         </div>
       </div>   
-      <input type="password" name="CVV" class="form-control" placeholder="CVV" #CVV="ngModel" [(ngModel)]="service.CVV" required maxlength="3" minlength="3">
+      <input type="password" name="CVV" class="form-control" placeholder="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVV" required maxlength="3" minlength="3">
     </div>
   </div>
 </div>
