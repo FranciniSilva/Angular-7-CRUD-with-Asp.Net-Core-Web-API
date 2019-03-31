@@ -29,16 +29,38 @@ export class PaymentDetailComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    this.service.postPaymentDetail(form.value).subscribe(
+    if (this.service.formData.PMId == 0)
+    this.insertRecord(form);
+  else
+    this.updateRecord(form);
+
+  }
+
+  insertRecord(form: NgForm) {
+    this.service.postPaymentDetail().subscribe(
+      res => {
+        debugger;
+        this.resetForm(form);
+        this.toastr.success('Submitted successfully', 'Payment Detail Register');
+        this.service.refreshList();
+      },
+      err => {
+        debugger;
+        console.log(err);
+      }
+    )
+  }
+  updateRecord(form: NgForm) {
+    this.service.putPaymentDetail().subscribe(
       res => {
         this.resetForm(form);
-        this.toastr.success('Submit succesfully', 'Payment Detail Register');
+        this.toastr.info('Submitted successfully', 'Payment Detail Register');
+        this.service.refreshList();
       },
       err => {
         console.log(err);
       }
     )
-
   }
 
 }
